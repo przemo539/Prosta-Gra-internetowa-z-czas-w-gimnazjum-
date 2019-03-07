@@ -1,0 +1,7 @@
+7|Dodano konkurs|Admin|6 stycznia 2012r.|Zapraszamy wszystkich do udziału w konkursie!!|
+6|Start|Admin|31 grudnia 2011r.|Dziś o godzinie 24.00 nastąpi restart gry. A więc życzymy miłej gry. Oraz udanego sylwestra.|
+5|Już niedługo ostatnie testy|Admin|30 grudnia 2011r.|Już nie długo rusza ostatnia faza testów wszyscy zainteresowanie będą mogli się zarejestrować i pomóc w testach|
+4|Postępy w pracach nad grą|Przemo|28 grudnia 2011r.|Mój team robi duże postępy w testach i nowych funkcjach gry jeśli masz jakiś pomysł na nową funkcje gry użyj supportu i powiadom nas o tym a może wprowadzimy twój pomysł do gry.|
+3|Beta testy pomyślne|Przemo|15 października 2011r.|Wygląda na to że wszystkie funkcje gry działają jak należy|
+2|Rozpoczeliśmy beta testy|Przemo|11 października 2011r.|Moja gra weszła w kolejny etap beta testy sprawdzamy czy wszystkie dotychczasowe funkcje działają|
+1|Rozpoczeliśmy prace|Przemo|8 września 2011r.|Prace nad grą zostały rozpoczęte|

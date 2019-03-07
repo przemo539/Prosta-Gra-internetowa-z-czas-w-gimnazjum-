@@ -1,0 +1,274 @@
+body {
+background: #003142 url('../www/images/bg.gif') repeat-x;
+font-family: Tahoma;
+font-size: 0.7em;
+color: #000;
+}
+
+* {
+padding: 0;
+margin: 0;
+}
+
+a {
+color: #0000ff;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+a img {
+border: 0;
+}
+
+#container {
+width: 955px;
+margin: 0 auto;
+background: #fff url('../www/images/cont-bg.gif') repeat-y;
+padding: 0 1px;
+}
+
+.clear {
+clear: both;
+}
+
+
+
+
+#header, #header a {
+width: 955px;
+height: 241px;
+text-indent: -300px;
+overflow: hidden;
+display: block;
+background: url('../www/images/header1.png') no-repeat;
+}
+
+#nav {
+height: 30px;
+line-height: 30px;
+background: #093042 url('../www/images/nav.jpg') no-repeat;
+border: 1px solid #000;
+border-width: 1px 1px 0 1px;
+padding: 0 0 0 40px;
+margin: 0 0 2px 0;
+overflow: hidden;
+list-style: none;
+}
+
+#nav li {
+float: left;
+}
+
+#nav li a {
+height: 30px;
+color: #fff;
+font-weight: bold;
+font-size: 1.35em;
+font-family: Trebuchet MS;
+display: block;
+padding: 0 15px;
+text-transform: uppercase;
+float: left;
+}
+
+#nav li a:hover {
+background: url('../www/images/nav2.gif') repeat-x top;
+text-decoration: none;
+}
+
+
+
+#content {
+width: 470px;
+padding: 0 0 0 10px;
+float: left;
+}
+
+#content h2 {
+background: #000 url('../www/images/content-head.gif') no-repeat;
+width: 470px;
+}
+
+#subheader {
+height: 129px;
+text-indent: -999px;
+overflow: hidden;
+background: url('../www/images/subheader1.png') no-repeat;
+}
+
+#content h3 {
+background: url('../www/images/h3.gif') no-repeat;
+height: 20px;
+line-height: 20px;
+border: 1px solid #cccccc;
+font-size: 1em;
+font-weight: normal;
+text-indent: 10px;
+}
+
+#content p {
+padding: 5px 0;
+}
+
+.content {
+border: 1px solid #cccccc;
+border-top: 0;
+padding: 1px 5px;
+}
+
+#content ul {
+padding: 5px 20px;
+}
+
+.meta {
+background: url('../www/images/meta.gif') no-repeat bottom;
+border: 1px solid #cccccc;
+border-top: 0;
+height: 13px;
+line-height: 13px;
+font-size: 0.9em;
+text-align: right;
+padding: 0 5px;
+margin: 0 0 14px 0;
+}
+
+.meta a {
+color: #000;
+}
+
+
+#sidebarl {
+float: left;
+padding: 0 0 0 3px;
+}
+
+#sidebarr {
+float: right;
+padding: 0 3px 0 0;
+}
+
+h2 {
+height: 25px;
+line-height: 27px;
+color: #fff;
+font-size: 1.2em;
+text-indent: 25px;
+text-transform: uppercase;
+}
+
+#container .s, #content {
+padding-bottom: 15px;
+}
+
+.s h2 {
+width: 230px;
+background: #000 url('../www/images/sidebar-head.gif') no-repeat;
+border-bottom: 1px solid #cccccc;
+}
+
+.s ul {
+list-style: none;
+border: 1px solid #cccccc;
+border-width: 0 1px;
+width: 228px;
+margin: 0 0 16px 0;
+}
+
+.s ul li {
+background: url('../www/images/sidebar-li.gif');
+height: 20px;
+line-height: 20px;
+overflow: hidden;
+border-bottom: 1px solid #cccccc;
+padding: 0 7px;
+color: #000;
+}
+
+.s ul li a {
+color: #000;
+}
+
+.s .links li a {
+display: block;
+}
+
+.box {
+border: 1px solid #cccccc;
+border-width: 0 1px 1px 1px;
+width: 228px;
+}
+
+.box2 {
+border: 1px solid #fff;
+padding: 0 5px;
+background: #efefef url('../www/images/box.gif') repeat-x;
+}
+
+.box p {
+margin: 5px 0;
+}
+
+#footer {
+height: 30px;
+line-height: 30px;
+background: url('../www/images/footer.gif') no-repeat top;
+padding: 0 10px 6px 0;
+clear: both;
+color: #fff;
+text-align: right;
+}
+
+#footer a {
+color: #fff;
+padding: 0 1px;
+}
+
+.cbalink {
+display:none;
+} 
+
+#strona_glowana td {
+color: 	#000000;
+}
+
+div.strona_glowna {
+  color: #00000;
+  font-family: verdana;
+  font-size: 8pt;
+  }
+  
+  .thumbnail{
+position: relative;
+z-index: 0;
+}
+
+.thumbnail:hover{
+background-color: transparent;
+z-index: 50;
+}
+
+.thumbnail span{ /*CSS for enlarged image*/
+position: absolute;
+background-color: lightyellow;
+padding: 5px;
+left: -1000px;
+border: 1px dashed gray;
+visibility: hidden;
+color: black;
+text-decoration: none;
+}
+
+.thumbnail span img{ /*CSS for enlarged image*/
+border-width: 0;
+padding: 2px;
+}
+
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+visibility: visible;
+top: 0;
+left: 60px; /*position where enlarged image should offset horizontally */
+
+}

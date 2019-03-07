@@ -1,0 +1,179 @@
+<?
+
+  require("config.inc.php");
+  if ($haslo==$poprawne_haslo && $login==$poprawny_login)
+  {
+   include("head.inc");
+   echo '<BR><CENTER><A href="admin.php">Dodaj newsa</A> | <A href="admin.php?akcja=edytuj">Edytuj</A> | <A href="admin.php?akcja=skasuj">Skasuj</A> | <A href="admin.php?akcja=info">O skrypcie</A></CENTER><BR><BR>';
+   
+   if(!isset($akcja))
+   {
+   echo '<CENTER><B>Dodawnie nowego newsa</B><BR><BR>';
+   echo '<FORM action="admin.php" method="post"><TABLE border=0>';
+   echo '<TR><TD align=right>Tytu³ newsa:</TD><TD><INPUT type="text" name="tytul"></TD></TR>';
+   echo '<TR><TD align=right>Autor:</TD><TD><INPUT type="text" name="autor"></TD></TR>';
+   echo '<TR><TD align=right>Data:</TD><TD><INPUT type="text" name="data"></TD></TR>';
+   echo '<TR><TD align=right>Tre¶æ:</TD><TD><TEXTAREA name="tresc" rows=5 cols=30></TEXTAREA></TD></TR>';
+   echo '</TABLE><INPUT type="hidden" name="akcja" value="dodawanie"><BR><INPUT type="submit" value="Dodaj newsa !"></CENTER></FORM>';
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="dodawanie")
+   {
+
+    $dane = file("data.txt");
+    $numer = $dane[0] + 1;
+
+    $linia=$numer."|".$tytul."|".$autor."|".$data."|".$tresc."|"."\n";
+
+    $plik = fopen("data.txt","w+");
+    flock($plik,2);
+    fputs($plik,$linia);
+
+    foreach($dane as $zapis)
+    {
+     if ($zapis!="\n"&&$zapis!="")
+     {
+      fputs($plik,$zapis);
+     }
+    }
+
+    flock($plik,3);
+    fclose($plik);
+    
+    $ostatni = fopen("last.inc","w+");
+    flock($ostatni,2);
+    fputs($ostatni,$data);
+    flock($ostatni,3);
+    fclose($ostatni);
+    
+    
+    $linijka[0] = $numer;
+    $linijka[1] = $tytul;
+    $linijka[2] = $autor;
+    $linijka[3] = $data;
+    $linijka[4] = $tresc;
+
+    echo('<BR><BR><CENTER><B>News numer <I>'.$numer.'</I> zosta³ pomy¶lnie dodany. Wygl±da to tak:<BR><BR>');
+    include("wpis.inc.php");
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="skasuj")
+   {
+    $dane = file("data.txt");
+    $ile = count($dane);
+    for ($i=0; $i<$ile; $i++)
+    {
+     $linijka = explode("|",$dane[$i]);
+     echo '<CENTER><FONT color=red>Wpis numer <B>'.$linijka[0].'</B></FONT> - <A href="admin.php?akcja=kasowanie&id='.$linijka[0].'">SKASUJ</A></CENTER>';
+     include("wpis.inc.php");
+    }
+
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="kasowanie")
+   {
+   
+    $dane = file("data.txt");
+    $plik = fopen("data.txt","w+");
+    flock($plik,2);
+    fputs($plik,$linijka);
+
+    foreach($dane as $zapis)
+    {
+    $tablica = explode("|",$zapis);
+
+    if ($zapis!="\n"&&$zapis!="")
+     {
+       if ($tablica[0]!=$id)
+       { fputs($plik,$zapis); }
+     }
+
+    }
+
+
+   echo '<BR><BR><CENTER><B>News numer <I>'.$id.'</I> zosta³ pomy¶lnie skasowany.<BR><BR>' ;
+
+   include("stopka.inc");
+   
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="edytuj")
+   {
+
+    $dane = file("data.txt");
+    $ile = count($dane);
+    for ($i=0; $i<$ile; $i++)
+    {
+     $linijka = explode("|",$dane[$i]);
+     echo '<CENTER><FONT color=red>Wpis numer <B>'.$linijka[0].'</B></FONT> - <A href="admin.php?akcja=edycja&id='.$linijka[0].'">EDYTUJ</A></CENTER>';
+     include("wpis.inc.php");
+    }
+    
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="edycja")
+   {
+    $dane = file("data.txt");
+    foreach($dane as $linia)
+    {
+     $linijka = explode("|",$linia);
+     if ($linijka[0]==$id)
+     {
+      $tytul = $linijka[1];
+      $autor = $linijka[2];
+      $data = $linijka[3];
+      $tresc = $linijka[4];
+     }
+    }
+    
+     echo '<CENTER><B>Edycja newsa numer '.$id.'</B><BR><BR>';
+     echo '<FORM action="admin.php" method="post"><TABLE border=0>';
+     echo '<TR><TD align=right>Tytu³ newsa:</TD><TD><INPUT type="text" name="tytul" value="'.$tytul.'"></TD></TR>';
+     echo '<TR><TD align=right>Autor:</TD><TD><INPUT type="text" name="autor" value="'.$autor.'"></TD></TR>';
+     echo '<TR><TD align=right>Data:</TD><TD><INPUT type="text" name="data" value="'.$data.'"></TD></TR>';
+     echo '<TR><TD align=right>Tre¶æ:</TD><TD><TEXTAREA name="tresc" rows=5 cols=30 >'.$tresc.'</TEXTAREA></TD></TR>';
+     echo '</TABLE><INPUT type="hidden" name="akcja" value="edytowanie"><INPUT type="hidden" name="id" value="'.$id.'"><BR><INPUT type="submit" value="Zapisz zmiany !"></CENTER></FORM>';
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="edytowanie")
+   {
+
+    $dane = file("data.txt");
+    $plik = fopen("data.txt","w+");
+    flock($plik,2);
+    fputs($plik,$linijka);
+
+    $linia=$numer."|".$tytul."|".$autor."|".$data."|".$tresc."|"."\n";
+
+    foreach($dane as $zapis)
+    {
+    $tablica = explode("|",$zapis);
+
+    if ($zapis!="\n"&&$zapis!="")
+     {
+       if ($tablica[0]!=$id)
+       {
+       fputs($plik,$zapis);
+       } else
+       {
+       fputs($plik,$linia);
+       }
+     }
+
+    }
+
+
+   echo '<BR><BR><CENTER><B>Zmiany w newsie numer <I>'.$id.'</I> zosta³y pomy¶lnie zapisane.<BR><BR>' ;
+
+   } else //////////////////////////////////////////////////////////////////////////////////
+   if ($akcja=="info")
+   {
+    echo '<BR><BR><CENTER><TABLE border=0 width=50%><TR><TD>';
+    echo 'Autor skryptu: <A href="mailto:comboy@o2.pl"><B>Kacper Cie¶la (COMBOY)</B></A><BR>';
+    echo 'Strona domowa skryptu: <A href="http://www.pasja.scrypty.com" target="_blank"><B>http://www.pasja.scrypty.com</B></A><BR>';
+    echo '<BR><BR>Skrypty jest chroniony prawem autorskim. Mo¿na go rozpowszechniaæ i udostêpniaæ, pod warunkiem nie czerpania z tego korzy¶ci finansowych oraz niezmieniania tre¶ci skryptu. Warunkiem korzystania ze skryptu jest jest niezmienianie jego treœci, a w szczególnoœci stopki "powered by COMBOY's NEWS" umieszczanej pod newsami.<BR><BR>';
+    echo 'Przed u¿yciem polecam pzeczytaæ README.TXT, gdzie znajduje siê licencja, opis korzystania ze skryptu oraz jego instalacji.<BR><BR>';
+    echo '¯yczê mi³ego korzystania ze skryptu.';
+    echo '</TD></tR></TABLE></CENTER>';
+   }
+   
+  } else
+  {
+  Header("Location: login.php");
+  }
+
+?>

@@ -1,0 +1,117 @@
+/* CSS Reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote { 
+	margin:0;
+	padding:0;
+	display:block;
+}
+
+th,td {
+	margin:0;
+	padding:0;	
+}
+	
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+	margin:0;
+	padding:0;
+	display:block;
+}
+address,caption,cite,code,dfn,em,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* site -------------------------------------------------------------------------------------------------------------------------- */
+body {
+	font-size: 10pt;
+	font-family: verdana;
+	background-color: #F2F2F2;
+	color: #333333;
+}
+
+a {
+	color: #122A5F;
+}
+
+a:hover {
+	color: #285FD7
+}
+
+#header {
+	display: block;
+	width: 100%;
+	padding: 15px 0;
+	background-color: #3B5998;
+}
+
+#content {
+	width: 990px;
+	margin: 0 auto;
+	padding: 15px;
+	border: 1px solid #DDDDDD;
+	background-color: #fff;
+	height: 400px;
+}
+
+h1 {
+	color: #fff;
+	font-size: 18pt;
+	font-weight: bold;
+	display: block;
+	margin: 0 auto;
+	width: 990px;
+}
+
+h2 {
+	display: block;
+	width: 90%;
+	color: #333333;
+	font-size: 11pt;
+	padding: 15px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #FFF9D7;
+	border: 1px solid #E2C822;
+	margin: 0 auto 20px auto;
+}
+
+input[type="submit"] {
+	background-color: #6079AB;
+	border: 1px solid #2A457F;
+	padding: 5px 10px;
+	color: #fff;
+}
+
+input[type="submit"]:hover {
+	background-color: #6F82AD;
+	cursor: pointer;
+}
+
+input[type="text"], input[type="password"] {
+	padding: 5px;
+	border: 1px solid #3B5998;
+	color: #6B6B6B;
+}
+
+.facebook_login {
+	float: left;
+}
